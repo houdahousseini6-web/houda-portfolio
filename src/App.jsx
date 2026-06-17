@@ -17,20 +17,42 @@ import Timeline from './components/Timeline'
 import FunFacts from './components/FunFacts'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import ReviewForm from './components/ReviewForm' // ← add this
+import ReviewForm from './components/ReviewForm'
+import AdminLogin from './components/admin/AdminLogin'
+import AdminLayout from './components/admin/AdminLayout'
 
 function App() {
   const [loading, setLoading] = useState(true)
 
-  // ← add this
   const params = new URLSearchParams(window.location.search)
   const isReviewMode = params.get('review') === 'true'
+  const isAdminMode = params.get('admin') === 'true'
 
-  // ← add this - if customer opens link, show only form
+  // ─── Admin State ───────────────────────────────────────
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem('admin_logged_in') === 'true'
+  )
+
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+    localStorage.removeItem('admin_logged_in')
+    window.location.href = '/'
+  }
+
+  // ─── Review Form ───────────────────────────────────────
   if (isReviewMode) {
     return <ReviewForm />
   }
 
+  // ─── Admin Dashboard ──────────────────────────────────
+  if (isAdminMode) {
+    if (!isLoggedIn) {
+      return <AdminLogin onLogin={setIsLoggedIn} />
+    }
+    return <AdminLayout onLogout={handleLogout} />
+  }
+
+  // ─── Portfolio ─────────────────────────────────────────
   const stars = useMemo(() => {
     return [...Array(60)].map((_, i) => ({
       left: `${Math.random() * 100}%`,

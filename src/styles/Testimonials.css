@@ -1,7 +1,9 @@
+/* ─── Section ───────────────────────────────────────────────────── */
 .testimonials-section {
-    padding: 140px 0;
+    padding: 100px 0;
     position: relative;
     z-index: 1;
+    overflow: hidden;
   }
   
   .testimonials-container {
@@ -10,176 +12,316 @@
     padding: 0 40px;
   }
   
-  /* ───── Grid Layout ───── */
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+  /* ─── Header ────────────────────────────────────────────────────── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
   }
   
-  /* ───── Card ───── */
-  .testimonial-card {
-    background: var(--bg-glass);
-    border: 1px solid var(--bg-glass-border);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-radius: 24px;
-    padding: 35px 30px;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .testimonial-card:hover {
-    border-color: var(--border-hover);
-    box-shadow: 0 25px 60px rgba(124, 58, 237, 0.15);
-  }
-  .testi-quote {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    font-size: 24px;
-    color: var(--purple-light);
-    opacity: 0.3;
-    transition: all 0.3s ease;
-  }
-  
-  .testimonial-card:hover .testi-quote {
-    opacity: 0.6;
-    transform: rotate(20deg) scale(1.2);
-  }
-  
-  
-  /* ───── Project Tag ───── */
-  .testi-project {
-    display: inline-block;
-    font-size: 11px;
-    color: var(--purple-light);
-    background: rgba(124, 58, 237, 0.1);
-    padding: 5px 14px;
-    border-radius: 20px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+  .section-tag-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 16px;
+  }
+  
+  .section-line {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--gradient-main);
+    border-radius: 2px;
+  }
+  
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #6366f1;
     text-transform: uppercase;
   }
   
-  /* ───── Stars ───── */
+  .section-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: var(--text-primary, #f1f5f9);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-main, linear-gradient(135deg, #6366f1, #a855f7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--text-muted, #64748b);
+    margin: 0;
+  }
+  
+  /* ─── Moving Testimonials (Marquee) ─────────────────────────────── */
+  .testimonials-marquee {
+    --gap: 24px;
+    display: flex;
+    gap: var(--gap);
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      white 5%,
+      white 95%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      white 5%,
+      white 95%,
+      transparent
+    );
+  }
+  
+  .testimonials-marquee-group {
+    flex-shrink: 0;
+    display: flex;
+    gap: var(--gap);
+    min-width: max-content;
+    animation: testimonial-scroll 30s linear infinite;
+  }
+  
+  .testimonials-marquee:hover .testimonials-marquee-group {
+    animation-play-state: paused;
+  }
+  
+  @keyframes testimonial-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  
+  /* ─── Card ──────────────────────────────────────────────────────── */
+  .testimonial-card {
+    width: 340px;
+    min-height: 300px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-glass, rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--bg-glass-border, rgba(255, 255, 255, 0.07));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    border-color: var(--border-hover, rgba(99, 102, 241, 0.4));
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
+  }
+  
+  /* ─── Quote Icon ────────────────────────────────────────────────── */
+  .testi-quote {
+    font-size: 24px;
+    color: rgba(99, 102, 241, 0.3);
+    margin-bottom: 12px;
+  }
+  
+  /* ─── Project Tag ───────────────────────────────────────────────── */
+  .testi-project {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #a78bfa;
+    background: rgba(139, 92, 246, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  
+  /* ─── Stars ─────────────────────────────────────────────────────── */
   .testi-stars {
     display: flex;
     gap: 3px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   
   .testi-star {
-    color: #FBBF24;
-    font-size: 14px;
+    color: #f59e0b;
+    font-size: 16px;
   }
   
-  /* ───── Text ───── */
+  /* ─── Review Text ───────────────────────────────────────────────── */
   .testi-text {
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.8;
-    font-weight: 400;
-    margin-bottom: 28px;
-    font-style: italic;
-    opacity: 0.9;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted, #94a3b8);
+    flex-grow: 1;
+    margin-bottom: 20px;
   }
   
-  /* ───── Author ───── */
+  /* ─── Author ────────────────────────────────────────────────────── */
   .testi-author {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
+    margin-top: auto;
   }
   
   .testi-avatar {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: var(--bg-glass);
-    border: 1px solid var(--bg-glass-border);
+    background: rgba(99, 102, 241, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    flex-shrink: 0;
+    font-size: 20px;
   }
   
   .testi-info h4 {
     font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    font-family: 'Sora', sans-serif;
-    margin-bottom: 3px;
+    font-weight: 700;
+    color: var(--text-primary, #f1f5f9);
+    margin: 0;
   }
   
   .testi-info p {
     font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 400;
+    color: var(--text-muted, #64748b);
+    margin: 2px 0 0;
   }
   
-  /* ───── Bottom Glow ───── */
+  /* ─── Bottom Glow ───────────────────────────────────────────────── */
   .testi-glow {
     position: absolute;
-    bottom: -30px;
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
-    height: 60px;
-    background: var(--purple);
-    filter: blur(50px);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    height: 80px;
+    background: rgba(99, 102, 241, 0.08);
+    border-radius: 50%;
+    filter: blur(30px);
     pointer-events: none;
   }
   
-  .testimonial-card:hover .testi-glow {
-    opacity: 0.08;
+  /* ─── Tablet ────────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .testimonials-container {
+      padding: 0 24px;
+    }
   }
   
-  
-  
-  /* ───── Responsive ───── */
   @media (max-width: 768px) {
-    .testimonials-grid {
-      grid-template-columns: 1fr;
+    .testimonials-section {
+      padding: 70px 0;
     }
   
-    .testimonials-grid > div:first-child {
-      grid-column: 1;
+    .testimonials-container {
+      padding: 0 16px;
     }
   
-    .testimonials-grid > div:first-child .testimonial-card {
-      grid-template-columns: 1fr;
-      padding: 35px 30px;
+    .testimonial-card {
+      width: 280px;
+      min-height: 280px;
+      padding: 22px 18px;
     }
   
-    .testimonials-grid > div:first-child .testi-text {
-      font-size: 15px;
+    .testimonials-marquee-group {
+      animation-duration: 22s;
+    }
+  
+    .section-header {
+      margin-bottom: 40px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .testimonials-section {
+      padding: 60px 0;
+    }
+  
+    .testimonials-container {
+      padding: 0 12px;
+    }
+  
+    .testimonials-marquee {
+      --gap: 12px;
+    }
+  
+    .testimonials-marquee-group {
+      animation-duration: 14s !important;
+    }
+  
+    .testimonial-card {
+      width: 72vw !important;
+      max-width: 220px;
+      min-height: 210px;
+      padding: 14px 12px;
+      border-radius: 14px;
+    }
+  
+    .testi-quote {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+  
+    .testi-project {
+      font-size: 9px;
+      padding: 3px 8px;
+      margin-bottom: 8px;
+    }
+  
+    .testi-stars {
+      margin-bottom: 8px;
+      gap: 2px;
+    }
+  
+    .testi-star {
+      font-size: 12px;
+    }
+  
+    .testi-text {
+      font-size: 11px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+  
+    .testi-avatar {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+    }
+  
+    .testi-info h4 {
+      font-size: 11px;
+    }
+  
+    .testi-info p {
+      font-size: 10px;
+    }
+  
+    .testi-glow {
+      display: none;
+    }
+  
+    .section-header {
       margin-bottom: 28px;
     }
-  }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* or your current columns */
-    gap: 24px;
-    align-items: stretch;
-  }
   
-  .testimonials-grid > * {
-    height: 100%;
-  }
-  
-  .testimonial-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .testi-text {
-    flex-grow: 1;
+    .section-subtitle {
+      font-size: 12px;
+    }
   }

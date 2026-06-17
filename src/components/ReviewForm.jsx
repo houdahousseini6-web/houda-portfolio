@@ -111,7 +111,7 @@ const ReviewForm = () => {
               <option value="Web Development">Web Development</option>
               <option value="Wedding Card Design">Wedding Card Design</option>
               <option value="3D Modeling & Animation">3D Modeling & Animation</option>
-              <option value="Graphic Design">Graphic Design</option>
+              <option value="Design">Design</option>
               <option value="Full Stack Development">Full Stack Development</option>
             </select>
           </div>

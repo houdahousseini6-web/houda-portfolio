@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { collection, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../data/firebase'
 import ScrollReveal from './ScrollReveal'
 import '../styles/Testimonials.css'
@@ -43,14 +43,13 @@ const fallbackTestimonials = [
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState(fallbackTestimonials)
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [ref] = useInView({ threshold: 0.1, triggerOnce: true })
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        // simple fetch - no index needed
         const snapshot = await getDocs(collection(db, 'testimonials'))
-  
+
         if (!snapshot.empty) {
           const reviews = snapshot.docs
             .map((doc) => ({
@@ -58,7 +57,7 @@ const Testimonials = () => {
               ...doc.data(),
             }))
             .filter((item) => item.approved === true)
-  
+
           if (reviews.length > 0) {
             setTestimonials(reviews)
           }
@@ -67,9 +66,48 @@ const Testimonials = () => {
         console.error('Error fetching testimonials:', error)
       }
     }
-  
+
     fetchTestimonials()
   }, [])
+
+  const baseTestimonials =
+    testimonials.length < 4
+      ? [...testimonials, ...testimonials]
+      : testimonials
+
+  const renderCards = (items, copy = 0) =>
+    items.map((item, index) => (
+      <motion.div
+        key={`${copy}-${item.id || item.name}-${index}`}
+        className="testimonial-card"
+        whileHover={{ y: -8, scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="testi-quote">✦</div>
+
+        <span className="testi-project">{item.project}</span>
+
+        <div className="testi-stars">
+          {[...Array(item.rating || 5)].map((_, i) => (
+            <span key={i} className="testi-star">★</span>
+          ))}
+        </div>
+
+        <p className="testi-text">{item.text}</p>
+
+        <div className="testi-author">
+          <div className="testi-avatar">
+            <span>{item.avatar || '👤'}</span>
+          </div>
+          <div className="testi-info">
+            <h4>{item.name}</h4>
+            <p>{item.role}</p>
+          </div>
+        </div>
+
+        <div className="testi-glow"></div>
+      </motion.div>
+    ))
 
   return (
     <section id="testimonials" className="testimonials-section" ref={ref}>
@@ -89,41 +127,17 @@ const Testimonials = () => {
           </div>
         </ScrollReveal>
 
-        <div className="testimonials-grid">
-          {testimonials.map((item, index) => (
-            <ScrollReveal key={item.id || index} delay={0.12 * index} direction="up">
-              <motion.div
-                className="testimonial-card"
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="testi-quote">✦</div>
+        <ScrollReveal delay={0.2}>
+          <div className="testimonials-marquee">
+            <div className="testimonials-marquee-group">
+              {renderCards(baseTestimonials, 1)}
+            </div>
 
-                <span className="testi-project">{item.project}</span>
-
-                <div className="testi-stars">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <span key={i} className="testi-star">★</span>
-                  ))}
-                </div>
-
-                <p className="testi-text">{item.text}</p>
-
-                <div className="testi-author">
-                  <div className="testi-avatar">
-                    <span>{item.avatar || '👤'}</span>
-                  </div>
-                  <div className="testi-info">
-                    <h4>{item.name}</h4>
-                    <p>{item.role}</p>
-                  </div>
-                </div>
-
-                <div className="testi-glow"></div>
-              </motion.div>
-            </ScrollReveal>
-          ))}
-        </div>
+            <div className="testimonials-marquee-group" aria-hidden="true">
+              {renderCards(baseTestimonials, 2)}
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

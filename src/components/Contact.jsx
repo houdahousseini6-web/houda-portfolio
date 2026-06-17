@@ -3,21 +3,44 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { contactInfo } from '../data/data'
 import { FaPaperPlane } from 'react-icons/fa'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { db } from '../data/firebase'
 import ScrollReveal from './ScrollReveal'
 import '../styles/Contact.css'
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setForm({ name: '', email: '', subject: '', message: '' })
-    setTimeout(() => setSent(false), 4000)
+    setLoading(true)
+    setError(false)
+
+    try {
+      await addDoc(collection(db, 'messages'), {
+        name: form.name,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+        createdAt: serverTimestamp(),
+      })
+
+      setSent(true)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setSent(false), 4000)
+    } catch (err) {
+      console.error('Error sending message:', err)
+      setError(true)
+      setTimeout(() => setError(false), 4000)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -25,10 +48,11 @@ const Contact = () => {
       <div className="contact-container">
         <ScrollReveal>
           <div className="section-header">
-          <div className="section-tag-wrap">
-  <span className="section-line"></span>
-  <span className="section-tag">GET IN TOUCH</span>
-</div>            <h2 className="section-title">
+            <div className="section-tag-wrap">
+              <span className="section-line"></span>
+              <span className="section-tag">GET IN TOUCH</span>
+            </div>
+            <h2 className="section-title">
               Let's create something <span className="gradient-text">amazing</span>
             </h2>
           </div>
@@ -47,7 +71,13 @@ const Contact = () => {
                 {contactInfo.map((item, index) => {
                   const Icon = item.icon
                   return (
-                    <a key={index} href={item.href} className="contact-card" target="_blank" rel="noreferrer">
+                    <a
+                      key={index}
+                      href={item.href}
+                      className="contact-card"
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                    >
                       <div className="contact-card-icon">
                         <Icon />
                       </div>
@@ -65,8 +95,14 @@ const Contact = () => {
           <ScrollReveal direction="right" delay={0.4}>
             <form className="contact-form-new" onSubmit={handleSubmit}>
               {sent && (
-                <div className="sent-message">
+                <div className="sent-message success">
                   <span>✨</span> Message sent successfully!
+                </div>
+              )}
+
+              {error && (
+                <div className="sent-message error">
+                  <span>❌</span> Failed to send. Please try again.
                 </div>
               )}
 
@@ -119,9 +155,9 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="send-btn">
+              <button type="submit" className="send-btn" disabled={loading}>
                 <FaPaperPlane />
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </ScrollReveal>
