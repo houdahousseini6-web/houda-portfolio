@@ -1,0 +1,92 @@
+/* ───── Wave Divider ───── */
+.divider-wave {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 1;
+    margin: -1px 0;
+  }
+  
+  .divider-wave.flip {
+    transform: rotate(180deg);
+  }
+  
+  .divider-wave svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* ───── Glow Divider ───── */
+  .divider-glow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .divider-glow-line {
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 58, 237, 0.4),
+      transparent
+    );
+  }
+  
+  .divider-glow-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.6);
+    animation: glowDotPulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes glowDotPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(124, 58, 237, 0.6); transform: scale(1); }
+    50% { box-shadow: 0 0 25px rgba(124, 58, 237, 0.9); transform: scale(1.3); }
+  }
+  
+  /* ───── Stars Divider ───── */
+  .divider-stars {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .divider-line-left,
+  .divider-line-right {
+    width: 150px;
+    height: 1px;
+  }
+  
+  .divider-line-left {
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.3));
+  }
+  
+  .divider-line-right {
+    background: linear-gradient(90deg, rgba(124, 58, 237, 0.3), transparent);
+  }
+  
+  .divider-star-icon {
+    color: var(--purple-light);
+    font-size: 16px;
+    animation: starSpin 4s linear infinite;
+  }
+  
+  @keyframes starSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

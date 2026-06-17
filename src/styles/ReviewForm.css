@@ -1,0 +1,189 @@
+.review-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 30px 20px;
+    background:
+      radial-gradient(circle at top left, rgba(124, 58, 237, 0.15), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 30%),
+      #0b0b12;
+  }
+  
+  .review-card {
+    width: 100%;
+    max-width: 620px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* ─── Header ────────────────────────────────────────────────────── */
+  .review-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  .review-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #a78bfa;
+    margin-bottom: 12px;
+  }
+  
+  .review-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 8px;
+  }
+  
+  .review-header p {
+    color: #9ca3af;
+    font-size: 15px;
+    margin: 0;
+  }
+  
+  /* ─── Form ──────────────────────────────────────────────────────── */
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .review-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .review-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e5e7eb;
+    letter-spacing: 0.03em;
+  }
+  
+  .review-field input,
+  .review-field select,
+  .review-field textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 13px 16px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .review-field input::placeholder,
+  .review-field textarea::placeholder {
+    color: #6b7280;
+  }
+  
+  .review-field select option {
+    background: #1a1a2e;
+    color: #fff;
+  }
+  
+  .review-field input:focus,
+  .review-field select:focus,
+  .review-field textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  }
+  
+  /* ─── Star Selector ─────────────────────────────────────────────── */
+  .star-selector {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .star-option {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .star-option.active {
+    color: #f59e0b;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  }
+  
+  .star-option:hover {
+    transform: scale(1.2);
+  }
+  
+  /* ─── Button ────────────────────────────────────────────────────── */
+  .review-btn {
+    margin-top: 8px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+  
+  .review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.35);
+  }
+  
+  .review-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* ─── Success Card ──────────────────────────────────────────────── */
+  .success-card {
+    text-align: center;
+    padding: 60px 32px;
+  }
+  
+  .review-success-icon {
+    font-size: 52px;
+    margin-bottom: 16px;
+  }
+  
+  .success-card h2 {
+    font-size: 28px;
+    color: #fff;
+    margin: 0 0 10px;
+  }
+  
+  .success-card p {
+    color: #9ca3af;
+    margin: 0 0 8px;
+    font-size: 15px;
+  }
+  
+  .success-card small {
+    color: #6b7280;
+    font-size: 13px;
+  }
+  
+  /* ─── Responsive ────────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .review-card {
+      padding: 28px 18px;
+    }
+  
+    .review-header h2 {
+      font-size: 22px;
+    }
+  }

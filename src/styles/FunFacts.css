@@ -1,0 +1,237 @@
+/* ─── Section ───────────────────────────────────────────────────── */
+.funfacts-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  /* ─── Background Orbs ───────────────────────────────────────────── */
+  .funfacts-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .funfacts-orb--left {
+    width: 400px;
+    height: 400px;
+    background: rgba(99, 102, 241, 0.1);
+    top: -100px;
+    left: -150px;
+  }
+  
+  .funfacts-orb--right {
+    width: 350px;
+    height: 350px;
+    background: rgba(168, 85, 247, 0.08);
+    bottom: -80px;
+    right: -120px;
+  }
+  
+  /* ─── Container ─────────────────────────────────────────────────── */
+  .funfacts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ─── Header ────────────────────────────────────────────────────── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .section-tag-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .section-line {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--gradient-main);
+    border-radius: 2px;
+  }
+  
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #6366f1;
+    text-transform: uppercase;
+  }
+  
+  .section-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .section-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  
+  /* ─── Grid ──────────────────────────────────────────────────────── */
+  .funfacts-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  
+  /* ─── Card ──────────────────────────────────────────────────────── */
+  .fact-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--bg-glass-border);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 32px 15px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    cursor: default;
+  }
+  
+  .fact-card:hover {
+    border-color: var(--card-color, var(--border-hover));
+    transform: translateY(-10px);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.2),
+      0 0 30px color-mix(in srgb, var(--card-color, #7c3aed) 20%, transparent);
+  }
+  
+  /* ─── Icon Glow ─────────────────────────────────────────────────── */
+  .fact-icon-glow {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: color-mix(in srgb, var(--card-color, #6366f1) 30%, transparent);
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  
+  .fact-card:hover .fact-icon-glow {
+    opacity: 1;
+  }
+  
+  /* ─── Icon ──────────────────────────────────────────────────────── */
+  .fact-icon {
+    font-size: 36px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  }
+  
+  .fact-card:hover .fact-icon {
+    transform: scale(1.2) rotate(-8deg);
+  }
+  
+  /* ─── Number ────────────────────────────────────────────────────── */
+  .fact-number {
+    font-size: 30px;
+    font-weight: 800;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Sora', sans-serif;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ─── Label ─────────────────────────────────────────────────────── */
+  .fact-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.02em;
+  }
+  
+  /* ─── Bottom Accent Line ────────────────────────────────────────── */
+  .fact-card-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background: color-mix(in srgb, var(--card-color, #6366f1) 80%, transparent);
+    border-radius: 2px 2px 0 0;
+    transition: transform 0.35s ease;
+  }
+  
+  .fact-card:hover .fact-card-line {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  /* ─── Responsive ────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .funfacts-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .funfacts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .funfacts-container {
+      padding: 0 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .funfacts-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  
+    .fact-card {
+      padding: 24px 10px 20px;
+    }
+  
+    .fact-number {
+      font-size: 24px;
+    }
+  
+    .fact-icon {
+      font-size: 28px;
+    }
+  }
