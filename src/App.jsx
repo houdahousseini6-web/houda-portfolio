@@ -18,8 +18,8 @@ import FunFacts from './components/FunFacts'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ReviewForm from './components/ReviewForm'
-import AdminLogin from './components/admin/AdminLogin'
-import AdminLayout from './components/admin/AdminLayout'
+import AdminLogin from './components/Admin/AdminLogin'
+import AdminLayout from './components/Admin/AdminLayout'
 
 function App() {
   const [loading, setLoading] = useState(true)
