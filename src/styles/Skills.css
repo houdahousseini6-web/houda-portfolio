@@ -234,3 +234,15 @@
     line-height: 1.6;
   }
 }
+.skills-section .section-header {
+  text-align: left !important;
+}
+
+.skills-section .section-tag-wrap {
+  justify-content: flex-start !important;
+}
+
+.skills-section .section-subtitle {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}git add . git commit -m "describe what you changed" git push
