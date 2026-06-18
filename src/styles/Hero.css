@@ -245,6 +245,16 @@
   z-index: 2;
 }
 
+@media (max-width: 768px) {
+  .scroll-down {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 30px auto 0;
+  }
+}
+
 .scroll-down span {
   font-size: 10px;
   color: var(--text-muted);
