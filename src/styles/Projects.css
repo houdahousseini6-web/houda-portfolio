@@ -241,17 +241,25 @@
     }
   
     .projects-section .section-header {
+      text-align: left;
       margin-bottom: 40px;
+    }
+  
+    .projects-section .section-tag-wrap {
+      justify-content: flex-start;
     }
   
     .projects-section .section-subtitle {
       font-size: 14px;
       line-height: 1.7;
+      margin-left: 0;
+      margin-right: 0;
     }
   
     .filter-bar {
       gap: 8px;
       margin-bottom: 36px;
+      justify-content: flex-start;
     }
   
     .filter-chip {
@@ -312,17 +320,25 @@
     }
   
     .projects-section .section-header {
+      text-align: left;
       margin-bottom: 32px;
+    }
+  
+    .projects-section .section-tag-wrap {
+      justify-content: flex-start;
     }
   
     .projects-section .section-subtitle {
       font-size: 13px;
       line-height: 1.6;
+      margin-left: 0;
+      margin-right: 0;
     }
   
     .filter-bar {
       gap: 6px;
       margin-bottom: 28px;
+      justify-content: flex-start;
     }
   
     .filter-chip {
