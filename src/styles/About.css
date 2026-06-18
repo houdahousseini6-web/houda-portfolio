@@ -292,31 +292,8 @@
   transform: scale(1.05);
 }
 @media (max-width: 768px) {
-  .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .stat-card {
-    min-height: 160px;
-    padding: 20px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .stat-emoji {
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-
-  .stat-number {
-    font-size: 28px;
-    margin-bottom: 6px;
-  }
-
-  .stat-label {
-    font-size: 11px;
-  }
+  .about-content { flex-direction: column; gap: 50px; }
+  .about-highlights { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .about-image-wrapper { width: 250px; height: 320px; }
 }
