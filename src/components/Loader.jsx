@@ -114,7 +114,7 @@ const Loader = ({ onComplete }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
             >
-              Multimedia Engineer & Creative Developer
+              Computer Engineer & Creative Developer
             </motion.p>
 
             {/* Progress Bar */}

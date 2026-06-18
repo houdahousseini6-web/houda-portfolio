@@ -222,32 +222,14 @@
     .testimonials-container {
       padding: 0 24px;
     }
-  }
-  
-  @media (max-width: 768px) {
-    .testimonials-section {
-      padding: 70px 0;
-    }
-  
-    .testimonials-container {
-      padding: 0 16px;
-    }
   
     .testimonial-card {
-      width: 280px;
+      width: 300px;
       min-height: 280px;
-      padding: 22px 18px;
-    }
-  
-    .testimonials-marquee-group {
-      animation-duration: 22s;
-    }
-  
-    .section-header {
-      margin-bottom: 40px;
     }
   }
   
+  /* ─── Mobile ────────────────────────────────────────────────────── */
   @media (max-width: 768px) {
     .testimonials-section {
       padding: 60px 0;
@@ -262,12 +244,84 @@
     }
   
     .testimonials-marquee-group {
-      animation-duration: 14s !important;
+      animation-duration: 20s;
     }
   
     .testimonial-card {
-      width: 72vw !important;
-      max-width: 220px;
+      width: 240px;
+      min-height: 240px;
+      padding: 18px 14px;
+      border-radius: 16px;
+    }
+  
+    .section-header {
+      margin-bottom: 32px;
+    }
+  
+    .section-subtitle {
+      font-size: 13px;
+    }
+  
+    .testi-quote {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+  
+    .testi-project {
+      font-size: 10px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+  
+    .testi-stars {
+      margin-bottom: 8px;
+    }
+  
+    .testi-star {
+      font-size: 13px;
+    }
+  
+    .testi-text {
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+  
+    .testi-avatar {
+      width: 34px;
+      height: 34px;
+      font-size: 16px;
+    }
+  
+    .testi-info h4 {
+      font-size: 12px;
+    }
+  
+    .testi-info p {
+      font-size: 11px;
+    }
+  
+    .testi-glow {
+      display: none;
+    }
+  }
+  
+  /* ─── Small Phone ───────────────────────────────────────────────── */
+  @media (max-width: 480px) {
+    .testimonials-section {
+      padding: 50px 0;
+    }
+  
+    .testimonials-marquee {
+      --gap: 10px;
+    }
+  
+    .testimonials-marquee-group {
+      animation-duration: 16s;
+    }
+  
+    .testimonial-card {
+      width: 200px;
       min-height: 210px;
       padding: 14px 12px;
       border-radius: 14px;
@@ -280,17 +334,12 @@
   
     .testi-project {
       font-size: 9px;
-      padding: 3px 8px;
-      margin-bottom: 8px;
-    }
-  
-    .testi-stars {
-      margin-bottom: 8px;
-      gap: 2px;
+      padding: 2px 8px;
+      margin-bottom: 6px;
     }
   
     .testi-star {
-      font-size: 12px;
+      font-size: 11px;
     }
   
     .testi-text {
@@ -300,9 +349,9 @@
     }
   
     .testi-avatar {
-      width: 30px;
-      height: 30px;
-      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      font-size: 13px;
     }
   
     .testi-info h4 {
@@ -311,17 +360,5 @@
   
     .testi-info p {
       font-size: 10px;
-    }
-  
-    .testi-glow {
-      display: none;
-    }
-  
-    .section-header {
-      margin-bottom: 28px;
-    }
-  
-    .section-subtitle {
-      font-size: 12px;
     }
   }
