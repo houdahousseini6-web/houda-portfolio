@@ -24,18 +24,27 @@
   padding: 0 40px;
 }
 
+.skills-section .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
 .skills-section .section-tag {
   color: var(--purple-light);
 }
 
 .skills-section .section-title {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
   color: var(--text-light);
+  margin: 0 0 12px;
+  line-height: 1.2;
 }
 
-.section-subtitle {
+.skills-section .section-subtitle {
   font-size: 15px;
   color: var(--text-light-muted);
-  margin-top: 16px;
+  margin: 0 auto;
   max-width: 450px;
   line-height: 1.8;
 }
@@ -215,5 +224,13 @@
   .skill-category-tag {
     font-size: 8px;
     padding: 4px 8px;
+  }
+  .skills-section .section-header {
+    margin-bottom: 32px;
+  }
+  
+  .skills-section .section-subtitle {
+    font-size: 13px;
+    line-height: 1.6;
   }
 }
