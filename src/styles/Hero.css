@@ -485,3 +485,9 @@
     padding: 7px 14px;
   }
 }
+
+@media (max-width: 768px) {
+  .scroll-down {
+    display: none;
+  }
+}
