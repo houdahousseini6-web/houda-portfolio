@@ -1,4 +1,3 @@
-
 .about {
   padding: 140px 0;
   position: relative;
@@ -61,11 +60,6 @@
   background: var(--gradient-main);
   opacity: 0.15;
 }
-.stat-emoji {
-  font-size: 28px;
-  margin-bottom: 10px;
-  display: block;
-}
 
 .about-image-placeholder {
   position: relative;
@@ -87,6 +81,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   border-radius: 30px;
   transition: transform 0.5s ease;
 }
@@ -128,7 +123,9 @@
   line-height: 1.5;
 }
 
-.about-right { flex: 1.3; }
+.about-right {
+  flex: 1.3;
+}
 
 .about-text {
   font-size: 15px;
@@ -248,7 +245,9 @@
   transition: opacity 0.3s ease;
 }
 
-.stat-card:hover::before { opacity: 1; }
+.stat-card:hover::before {
+  opacity: 1;
+}
 
 .stat-card:hover {
   border-color: var(--border-hover);
@@ -272,28 +271,152 @@
   background-clip: text;
   font-family: 'Sora', sans-serif;
   margin-bottom: 10px;
+  line-height: 1.1;
 }
 
 .stat-label {
   font-size: 13px;
   color: var(--text-muted);
+  line-height: 1.4;
+  white-space: normal;
 }
 
-.about-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 30px;
-  transition: transform 0.5s ease;
-}
-
-.about-image-placeholder:hover .about-photo {
-  transform: scale(1.05);
-}
+/* ─── Tablet & Mobile ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .about-content { flex-direction: column; gap: 50px; }
-  .about-highlights { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: 1fr 1fr; }
-  .about-image-wrapper { width: 250px; height: 320px; }
+  .about {
+    padding: 100px 0;
+  }
+
+  .about-container {
+    padding: 0 20px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .about-image-wrapper {
+    width: 250px;
+    height: 320px;
+  }
+
+  .about-experience-badge {
+    bottom: -18px;
+    right: -10px;
+    padding: 16px 18px;
+    border-radius: 18px;
+  }
+
+  .exp-number {
+    font-size: 26px;
+  }
+
+  .exp-label {
+    font-size: 11px;
+  }
+
+  .stat-card {
+    padding: 22px 12px;
+    min-height: 150px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .stat-emoji {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+
+/* ─── Small Phone ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .about {
+    padding: 80px 0;
+  }
+
+  .about-container {
+    padding: 0 16px;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .about-text {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .about-image-wrapper {
+    width: 220px;
+    height: 290px;
+  }
+
+  .about-experience-badge {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .exp-number {
+    font-size: 22px;
+  }
+
+  .exp-label {
+    font-size: 10px;
+  }
+
+  .highlight-item {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .highlight-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .about-stats {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 18px 10px;
+    min-height: 135px;
+    border-radius: 18px;
+  }
+
+  .stat-emoji {
+    font-size: 20px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
 }
