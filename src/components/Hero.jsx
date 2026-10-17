@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaDribbble } from 'react-icons/fa'
+import {
+  FaGithub,
+  FaLinkedin,
+  FaDribbble,
+  FaReact,
+  FaCube,
+  FaPalette,
+  FaCode
+} from 'react-icons/fa'
 import '../styles/Hero.css'
 
 const roles = [
@@ -150,10 +158,25 @@ const Hero = () => {
             <div className="photo-container">
               <img src="/images/houda-hero.jpg" alt="Houda Housseini" />
             </div>
-            <div className="photo-badge badge-react">⚛️ React</div>
-            <div className="photo-badge badge-3d">🧊 3D</div>
-            <div className="photo-badge badge-design">🎨 Design</div>
-            <div className="photo-badge badge-code">💻 Code</div>
+            <div className="photo-badge badge-react">
+  <FaReact />
+  <span>React</span>
+</div>
+
+<div className="photo-badge badge-3d">
+  <FaCube />
+  <span>3D</span>
+</div>
+
+<div className="photo-badge badge-design">
+  <FaPalette />
+  <span>Design</span>
+</div>
+
+<div className="photo-badge badge-code">
+  <FaCode />
+  <span>Code</span>
+</div>
           </div>
         </motion.div>
       </div>

@@ -491,3 +491,14 @@
     display: none;
   }
 }
+.photo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.photo-badge svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
