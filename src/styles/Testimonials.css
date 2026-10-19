@@ -581,3 +581,21 @@
     -webkit-mask-image: none;
   }
 }
+/* Force testimonials header to align left */
+
+.testimonials-section .section-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+}
+
+.testimonials-section .section-header .section-title,
+.testimonials-section .section-header .section-subtitle {
+  width: 100% !important;
+  max-width: 550px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  align-self: flex-start !important;
+  text-align: left !important;
+}

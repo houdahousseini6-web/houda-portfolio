@@ -1,7 +1,12 @@
 
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { collection, getDocs } from 'firebase/firestore'
+import {
+  collection,
+  getDocs,
+  query,
+  where
+} from 'firebase/firestore'
 import {
   FaQuoteLeft,
   FaStar,
@@ -117,9 +122,12 @@ const Testimonials = () => {
 
     const fetchTestimonials = async () => {
       try {
-        const snapshot = await getDocs(
-          collection(db, 'testimonials')
-        )
+        const reviewsQuery = query(
+  collection(db, 'testimonials'),
+  where('approved', '==', true)
+)
+
+const snapshot = await getDocs(reviewsQuery)
 
         const reviews = snapshot.docs
           .map((doc) => ({
