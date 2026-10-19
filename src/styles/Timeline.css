@@ -1,125 +1,480 @@
+
+/* ==========================================
+   TIMELINE SECTION
+   Original background preserved
+========================================== */
+
 .timeline-section {
-    padding: 140px 0;
-    position: relative;
-    z-index: 1;
-  }
-  
+  padding: 140px 0;
+  position: relative;
+  z-index: 1;
+}
+
 .timeline-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
+  position: relative;
 }
-  
-  .timeline {
-    position: relative;
-    margin-top: 20px;
+
+/* ==========================================
+   SECTION HEADER - LEFT ALIGNED
+========================================== */
+
+.timeline-section .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 70px;
+}
+
+.timeline-section .section-tag-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-start;
+
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.timeline-section .section-title {
+  text-align: left;
+  align-self: flex-start;
+  width: 100%;
+  margin: 0;
+}
+
+/* ==========================================
+   TIMELINE WRAPPER
+========================================== */
+
+.timeline {
+  position: relative;
+  margin-top: 20px;
+}
+
+/* ==========================================
+   CENTER GRADIENT LINE
+========================================== */
+
+.timeline-line {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background: linear-gradient(
+    180deg,
+    var(--purple),
+    var(--pink),
+    var(--purple)
+  );
+
+  opacity: 0.35;
+  transform: translateX(-50%);
+
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* ==========================================
+   TIMELINE ITEMS
+========================================== */
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 60px;
+
+  position: relative;
+  width: 100%;
+}
+
+/* Alternate left */
+
+.timeline-item.left {
+  flex-direction: row;
+  padding-right: calc(50% + 40px);
+}
+
+/* Alternate right */
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+  padding-left: calc(50% + 40px);
+}
+
+/* Remove unnecessary space after last item */
+
+.timeline > :last-child .timeline-item {
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   GLASS TIMELINE CARD
+========================================== */
+
+.timeline-content {
+  width: 100%;
+  min-width: 0;
+
+  background: var(--bg-glass);
+
+  border: 1px solid var(--bg-glass-border);
+
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* Elegant purple hover effect */
+
+.timeline-content:hover {
+  border-color: var(--border-hover);
+
+  box-shadow:
+    0 20px 50px rgba(124, 58, 237, 0.15),
+    0 0 25px rgba(168, 85, 247, 0.06);
+}
+
+/* Framer Motion controls hover transforms,
+   so no transform is added in CSS. */
+
+/* ==========================================
+   ICON CONTAINER
+========================================== */
+
+.timeline-icon {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 17px;
+  border: 1px solid;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  position: relative;
+  flex-shrink: 0;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Professional SVG icons */
+
+.timeline-icon-svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+}
+
+/* Subtle glow on hover */
+
+.timeline-content:hover .timeline-icon {
+  box-shadow:
+    0 8px 24px rgba(124, 58, 237, 0.12);
+}
+
+/* ==========================================
+   YEAR
+========================================== */
+
+.timeline-year {
+  display: block;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  margin-bottom: 10px;
+
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.timeline-title {
+  font-size: 18px;
+  font-weight: 700;
+
+  color: var(--text);
+
+  margin: 0 0 12px;
+
+  line-height: 1.5;
+
+  font-family: 'Sora', sans-serif;
+
+  transition: color 0.3s ease;
+}
+
+.timeline-content:hover .timeline-title {
+  color: var(--purple-light);
+}
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+.timeline-description {
+  font-size: 13px;
+  font-weight: 400;
+
+  color: var(--text-muted);
+
+  line-height: 1.8;
+  margin: 0;
+
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   TIMELINE DOTS
+========================================== */
+
+.timeline-dot {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  border: 3px solid var(--bg-main);
+
+  z-index: 2;
+
+  transition:
+    box-shadow 0.35s ease,
+    scale 0.35s ease;
+}
+
+/* Dot grows slightly on card hover */
+
+.timeline-item:hover .timeline-dot {
+  scale: 1.2;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1024px) {
+
+  .timeline-container {
+    padding: 0 24px;
   }
-  
+
+  .timeline-item.left {
+    padding-right: calc(50% + 30px);
+  }
+
+  .timeline-item.right {
+    padding-left: calc(50% + 30px);
+  }
+
+  .timeline-content {
+    padding: 26px;
+  }
+
+  .timeline-title {
+    font-size: 17px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+  .timeline-section {
+    padding: 100px 0;
+  }
+
+  .timeline-container {
+    padding: 0 20px;
+  }
+
+  .timeline-section .section-header {
+    margin-bottom: 50px;
+  }
+
+  /* Move the timeline line to the left */
+
   .timeline-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, var(--purple), var(--pink), var(--purple));
-    opacity: 0.2;
+    left: 20px;
     transform: translateX(-50%);
   }
-  
-  .timeline-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 60px;
-    position: relative;
-  }
-  
-  .timeline-item.left {
-    flex-direction: row;
-    padding-right: calc(50% + 40px);
-  }
-  
+
+  /* Stack all cards on the right */
+
+  .timeline-item.left,
   .timeline-item.right {
-    flex-direction: row-reverse;
-    padding-left: calc(50% + 40px);
+    flex-direction: row;
+
+    padding-right: 0;
+    padding-left: 55px;
+
+    margin-bottom: 35px;
   }
-  
+
   .timeline-content {
-    background: var(--bg-glass);
-    border: 1px solid var(--bg-glass-border);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-radius: 24px;
-    padding: 30px;
-    transition: all 0.3s ease;
-    width: 100%;
+    padding: 25px 22px;
+    border-radius: 20px;
   }
-  
-  .timeline-content:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(124, 58, 237, 0.15);
+
+  /* Move dots next to the cards */
+
+  .timeline-dot {
+    left: 20px;
   }
-  
+
   .timeline-icon {
     width: 50px;
     height: 50px;
-    border-radius: 16px;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+    border-radius: 15px;
+  }
+
+  .timeline-icon-svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .timeline-title {
+    font-size: 17px;
+  }
+
+  .timeline-description {
+    font-size: 12px;
+    line-height: 1.75;
+  }
+}
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media (max-width: 480px) {
+
+  .timeline-section {
+    padding: 80px 0;
+  }
+
+  .timeline-container {
+    padding: 0 16px;
+  }
+
+  .timeline-section .section-header {
+    margin-bottom: 40px;
+  }
+
+  .timeline-section .section-title {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .timeline-line {
+    left: 14px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    padding-left: 38px;
+    margin-bottom: 25px;
+  }
+
+  .timeline-dot {
+    left: 14px;
+
+    width: 14px;
+    height: 14px;
+
+    border-width: 2px;
+  }
+
+  .timeline-content {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .timeline-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 14px;
     margin-bottom: 16px;
   }
-  
+
+  .timeline-icon-svg {
+    width: 21px;
+    height: 21px;
+  }
+
   .timeline-year {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
     margin-bottom: 8px;
-    font-family: 'Space Grotesk', sans-serif;
   }
-  
+
   .timeline-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
+    font-size: 15px;
+    line-height: 1.45;
     margin-bottom: 10px;
-    font-family: 'Sora', sans-serif;
   }
-  
+
   .timeline-description {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.8;
+    font-size: 12px;
+    line-height: 1.7;
   }
-  
-  .timeline-dot {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    z-index: 2;
-    border: 3px solid var(--bg-main);
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .timeline-content,
+  .timeline-icon,
+  .timeline-dot,
+  .timeline-title {
+    transition: none !important;
   }
-  
-  @media (max-width: 768px) {
-    .timeline-line {
-      left: 20px;
-    }
-  
-    .timeline-item.left,
-    .timeline-item.right {
-      flex-direction: row;
-      padding-right: 0;
-      padding-left: 60px;
-    }
-  
-    .timeline-dot {
-      left: 20px;
-    }
+
+  .timeline-item:hover .timeline-dot {
+    scale: 1;
   }
+}
