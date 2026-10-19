@@ -245,7 +245,7 @@ const Hero = () => {
             <span className="hero-name-main">
 
               <span className="gradient-text">
-                Houda
+                Hoda
               </span>
 
               <br />
