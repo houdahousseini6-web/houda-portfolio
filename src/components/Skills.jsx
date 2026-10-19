@@ -1,55 +1,104 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+
+import { motion, useReducedMotion } from 'framer-motion'
 import { skills } from '../data/data'
 import ScrollReveal from './ScrollReveal'
 import '../styles/Skills.css'
 
-const Skills = () => {
-  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true })
-  const [hovered, setHovered] = useState(null)
+// Each card has its own scroll reveal animation
+const SkillCard = ({ skill, index }) => {
+  const reduceMotion = useReducedMotion()
+  const Icon = skill.icon
 
   return (
-    <section id="skills" className="skills-section" ref={ref}>
+    <motion.div
+      className="skill-card-new"
+      style={{ '--skill-color': skill.color }}
+      initial={
+        reduceMotion
+          ? false
+          : { opacity: 0, y: 35, scale: 0.94 }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15
+      }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.55,
+        delay: reduceMotion ? 0 : (index % 4) * 0.08,
+        ease: 'easeOut'
+      }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -8,
+              scale: 1.025,
+              transition: { duration: 0.25 }
+            }
+      }
+    >
+      <div className="skill-icon-wrapper">
+        <Icon className="skill-icon-new" aria-hidden="true" />
+      </div>
+
+      <span className="skill-name-new">
+        {skill.name}
+      </span>
+
+      <span className="skill-category-tag">
+        {skill.category}
+      </span>
+
+      <div className="skill-glow" aria-hidden="true" />
+    </motion.div>
+  )
+}
+
+const Skills = () => {
+  return (
+    <section id="skills" className="skills-section">
       <div className="skills-container">
+
+        {/* SECTION HEADER */}
         <ScrollReveal>
           <div className="section-header">
-          <div className="section-tag-wrap">
-  <span className="section-line"></span>
-  <span className="section-tag">MY SKILLS</span>
-</div>            <h2 className="section-title">
-              Technologies I <span className="gradient-text">master</span>
+            <div className="section-tag-wrap">
+              <span className="section-line" />
+              <span className="section-tag">
+                MY SKILLS
+              </span>
+            </div>
+
+            <h2 className="section-title">
+              Technologies I{' '}
+              <span className="gradient-text">
+                work with
+              </span>
             </h2>
+
             <p className="section-subtitle">
-              A curated collection of tools and technologies I use to bring ideas to life.
+              A curated collection of tools and
+              technologies I use to bring ideas to life.
             </p>
           </div>
         </ScrollReveal>
 
+        {/* TECHNOLOGY GRID */}
         <div className="skills-grid-new">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon
-            return (
-              <ScrollReveal key={index} delay={0.08 * index} direction="up">
-                <motion.div
-                  className={`skill-card-new ${hovered === index ? 'active' : ''}`}
-                  onMouseEnter={() => setHovered(index)}
-                  onMouseLeave={() => setHovered(null)}
-                  whileHover={{ y: -10, scale: 1.03 }}
-                >
-                  <div className="skill-icon-wrapper" style={{ '--skill-color': skill.color }}>
-                    <Icon className="skill-icon-new" />
-                  </div>
-                  <span className="skill-name-new">{skill.name}</span>
-                  <span className="skill-category-tag">
-                    {skill.category === 'dev' ? 'Development' : 'Design'}
-                  </span>
-                  <div className="skill-glow" style={{ background: skill.color }}></div>
-                </motion.div>
-              </ScrollReveal>
-            )
-          })}
+          {skills.map((skill, index) => (
+            <SkillCard
+              key={skill.name}
+              skill={skill}
+              index={index}
+            />
+          ))}
         </div>
+
       </div>
     </section>
   )
