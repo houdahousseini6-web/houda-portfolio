@@ -235,7 +235,7 @@ const About = () => {
             <div className="about-right">
 
               <p className="about-text">
-                I'm <strong>Houda Housseini</strong>,
+                I'm <strong>Hoda Housseini</strong>,
                 a creative engineer inspired by the harmony
                 of technology and design. With a passion
                 for innovation and attention to detail,

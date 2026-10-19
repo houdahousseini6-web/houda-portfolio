@@ -1,6 +1,7 @@
 
 /* ==========================================
-   ABOUT SECTION
+   ABOUT SECTION - PREMIUM POLISHED VERSION
+   Original design and background preserved
 ========================================== */
 
 .about {
@@ -20,7 +21,7 @@
 ========================================== */
 
 .section-header {
-  margin-bottom: 80px;
+  margin-bottom: 90px;
 }
 
 .section-tag {
@@ -41,32 +42,35 @@
 }
 
 /* ==========================================
-   ABOUT CONTENT
+   MAIN CONTENT LAYOUT
 ========================================== */
 
 .about-content {
   display: flex;
   align-items: center;
-  gap: 80px;
-  margin-bottom: 80px;
+  gap: 90px;
+  margin-bottom: 95px;
 }
 
 /* ==========================================
-   LEFT SIDE - PHOTO
+   LEFT SIDE - PROFILE IMAGE
 ========================================== */
 
 .about-left {
   flex: 1;
   display: flex;
   justify-content: center;
+  min-width: 0;
 }
 
 .about-image-wrapper {
   position: relative;
   width: 320px;
   height: 400px;
-  perspective: 1000px;
+  max-width: 100%;
 }
+
+/* Decorative gradient behind image */
 
 .about-image-bg {
   position: absolute;
@@ -75,19 +79,21 @@
   width: 100%;
   height: 100%;
   border-radius: 30px;
+
   background: var(--gradient-main);
   opacity: 0.15;
+
   transition:
     opacity 0.4s ease,
     filter 0.4s ease;
 }
 
 .about-image-wrapper:hover .about-image-bg {
-  opacity: 0.25;
-  filter: blur(8px);
+  opacity: 0.22;
+  filter: blur(6px);
 }
 
-/* Photo container */
+/* Profile image frame */
 
 .about-image-placeholder {
   position: relative;
@@ -104,9 +110,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.22),
+    0 0 30px rgba(168, 85, 247, 0.08);
 
   transition:
     border-color 0.4s ease,
@@ -114,13 +122,14 @@
 }
 
 .about-image-placeholder:hover {
-  border-color: var(--border-hover);
+  border-color: rgba(168, 85, 247, 0.35);
+
   box-shadow:
-    var(--shadow-card-hover),
-    0 0 45px rgba(168, 85, 247, 0.12);
+    0 20px 55px rgba(0, 0, 0, 0.24),
+    0 0 40px rgba(168, 85, 247, 0.14);
 }
 
-/* Photo */
+/* Profile picture */
 
 .about-photo {
   width: 100%;
@@ -142,8 +151,8 @@
 
 .about-experience-badge {
   position: absolute;
-  bottom: -25px;
-  right: -25px;
+  bottom: -18px;
+  right: -18px;
 
   background: var(--bg-glass);
   border: 1px solid var(--bg-glass-border);
@@ -151,14 +160,17 @@
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 
-  border-radius: 24px;
-  padding: 22px 28px;
+  border-radius: 22px;
+  padding: 18px 24px;
 
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 
-  box-shadow: var(--shadow-card);
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(168, 85, 247, 0.08);
+
   z-index: 2;
 
   transition:
@@ -167,9 +179,10 @@
 }
 
 .about-experience-badge:hover {
-  border-color: var(--purple);
+  border-color: rgba(168, 85, 247, 0.4);
+
   box-shadow:
-    0 10px 35px rgba(168, 85, 247, 0.2);
+    0 16px 40px rgba(168, 85, 247, 0.2);
 }
 
 .exp-number {
@@ -182,6 +195,7 @@
   background-clip: text;
 
   font-family: 'Sora', sans-serif;
+  line-height: 1.1;
 }
 
 .exp-label {
@@ -191,18 +205,20 @@
 }
 
 /* ==========================================
-   RIGHT SIDE - TEXT
+   RIGHT SIDE - ABOUT DESCRIPTION
 ========================================== */
 
 .about-right {
   flex: 1.3;
+  min-width: 0;
 }
 
 .about-text {
   font-size: 15px;
   color: var(--text-muted);
-  line-height: 1.9;
-  margin-bottom: 20px;
+  line-height: 1.95;
+  margin-bottom: 22px;
+  max-width: 95%;
 }
 
 .about-text strong {
@@ -211,15 +227,17 @@
 }
 
 /* ==========================================
-   HIGHLIGHT CARDS
+   HIGHLIGHT CARDS GRID
 ========================================== */
 
 .about-highlights {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin: 35px 0;
+  gap: 16px;
+  margin: 40px 0 34px;
 }
+
+/* Individual highlight card */
 
 .highlight-item {
   display: flex;
@@ -227,6 +245,7 @@
   gap: 14px;
 
   min-width: 0;
+  position: relative;
 
   background: var(--bg-glass);
   border: 1px solid var(--bg-glass-border);
@@ -234,10 +253,10 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
-  padding: 18px 20px;
+  padding: 20px 22px;
   border-radius: 20px;
 
-  position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 
   transition:
     border-color 0.3s ease,
@@ -247,14 +266,14 @@
   cursor: default;
 }
 
-/* Motion handles card movement */
+/* Framer Motion controls vertical hover movement */
 
 .highlight-item:hover {
-  border-color: var(--border-hover);
-  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.28);
+  background: rgba(168, 85, 247, 0.07);
 
   box-shadow:
-    0 12px 30px rgba(168, 85, 247, 0.12);
+    0 14px 32px rgba(168, 85, 247, 0.1);
 }
 
 /* ==========================================
@@ -262,18 +281,18 @@
 ========================================== */
 
 .highlight-icon {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   background: var(--purple-glow);
-  border: 1px solid rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.14);
 
   color: var(--purple-light);
-  border-radius: 14px;
+  border-radius: 15px;
   flex-shrink: 0;
 
   transition:
@@ -291,6 +310,8 @@
     color 0.3s ease;
 }
 
+/* Icon hover */
+
 .highlight-item:hover .highlight-icon {
   background: rgba(168, 85, 247, 0.2);
   border-color: rgba(168, 85, 247, 0.3);
@@ -303,11 +324,13 @@
   transform: scale(1.15) rotate(-5deg);
 }
 
+/* Highlight text */
+
 .highlight-item h4 {
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .highlight-item p {
@@ -324,18 +347,17 @@
 .download-cv {
   background: var(--bg-glass);
   color: var(--text);
+
   border: 1px solid var(--bg-glass-border);
 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
-  padding: 14px 32px;
+  padding: 15px 34px;
   border-radius: 50px;
 
   font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-
+  font-weight: 600;
   font-family: 'Space Grotesk', sans-serif;
 
   display: inline-flex;
@@ -344,6 +366,7 @@
   gap: 12px;
 
   text-decoration: none;
+  cursor: pointer;
 
   transition:
     border-color 0.3s ease,
@@ -351,16 +374,21 @@
     box-shadow 0.3s ease;
 }
 
+/* Motion handles button movement */
+
 .download-cv:hover {
-  border-color: var(--purple);
-  background: var(--purple-glow);
-  box-shadow: var(--shadow-glow);
+  border-color: rgba(168, 85, 247, 0.35);
+  background: rgba(168, 85, 247, 0.1);
+
+  box-shadow:
+    0 14px 35px rgba(168, 85, 247, 0.14);
 }
+
+/* Download icon */
 
 .download-cv svg {
   width: 16px;
   height: 16px;
-
   color: var(--purple-light);
 
   transition: transform 0.3s ease;
@@ -382,7 +410,7 @@
 .about-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 /* ==========================================
@@ -397,21 +425,27 @@
   backdrop-filter: blur(10px);
 
   border-radius: 24px;
-  padding: 40px 25px;
+  padding: 34px 24px;
 
   text-align: center;
   position: relative;
   overflow: hidden;
 
   height: 100%;
+  min-height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   transition:
-    border-color 0.4s ease,
-    background 0.4s ease,
-    box-shadow 0.4s ease;
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-/* Animated top gradient line */
+/* Gradient line at top */
 
 .stat-card::before {
   content: '';
@@ -424,8 +458,8 @@
   height: 3px;
 
   background: var(--gradient-main);
-
   opacity: 0;
+
   transition: opacity 0.3s ease;
 }
 
@@ -433,28 +467,32 @@
   opacity: 1;
 }
 
+/* Card hover */
+
 .stat-card:hover {
-  border-color: var(--border-hover);
-  background: rgba(168, 85, 247, 0.06);
-  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(168, 85, 247, 0.28);
+  background: rgba(168, 85, 247, 0.05);
+
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.18),
+    0 0 28px rgba(168, 85, 247, 0.1);
 }
 
 /* ==========================================
-   PROFESSIONAL STATISTIC ICONS
+   STATISTICS ICONS
 ========================================== */
 
 .stat-icon {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
 
-  margin: 0 auto 15px;
+  margin: 0 auto 18px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   border-radius: 14px;
-
   background: var(--purple-glow);
   color: var(--purple-light);
 
@@ -472,6 +510,8 @@
 
   transition: transform 0.35s ease;
 }
+
+/* Stat icon hover */
 
 .stat-card:hover .stat-icon {
   background: rgba(168, 85, 247, 0.2);
@@ -492,7 +532,7 @@
 .stat-number {
   display: block;
 
-  font-size: 40px;
+  font-size: 42px;
   font-weight: 800;
 
   background: var(--gradient-main);
@@ -502,26 +542,57 @@
 
   font-family: 'Sora', sans-serif;
 
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 1.1;
 
   font-variant-numeric: tabular-nums;
 }
 
-/* Labels */
+/* Statistic labels */
 
 .stat-label {
   display: block;
 
   font-size: 13px;
   color: var(--text-muted);
-
-  line-height: 1.4;
+  line-height: 1.5;
   white-space: normal;
 }
 
 /* ==========================================
-   TABLET & MOBILE
+   TABLET RESPONSIVENESS
+========================================== */
+
+@media (max-width: 1024px) {
+
+  .about-content {
+    gap: 50px;
+  }
+
+  .about-image-wrapper {
+    width: 280px;
+    height: 360px;
+  }
+
+  .about-highlights {
+    gap: 12px;
+  }
+
+  .highlight-item {
+    padding: 16px;
+  }
+
+  .about-stats {
+    gap: 16px;
+  }
+
+  .stat-card {
+    padding: 28px 16px;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
 ========================================== */
 
 @media (max-width: 768px) {
@@ -541,8 +612,8 @@
   .about-content {
     flex-direction: column;
     align-items: stretch;
-    gap: 50px;
-    margin-bottom: 60px;
+    gap: 55px;
+    margin-bottom: 65px;
   }
 
   .about-left {
@@ -559,10 +630,23 @@
     width: 100%;
   }
 
+  .about-text {
+    max-width: 100%;
+  }
+
+  /* Highlight cards */
+
   .about-highlights {
     grid-template-columns: 1fr;
     gap: 12px;
+    margin: 30px 0;
   }
+
+  .highlight-item {
+    padding: 18px;
+  }
+
+  /* Statistics */
 
   .about-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -570,19 +654,15 @@
   }
 
   .stat-card {
-    min-height: 160px;
+    min-height: 165px;
     padding: 18px 10px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border-radius: 20px;
   }
 
   .stat-icon {
     width: 40px;
     height: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .stat-icon svg {
@@ -592,7 +672,7 @@
 
   .stat-number {
     font-size: 28px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .stat-label {
@@ -625,12 +705,10 @@
 
   .about-content {
     gap: 45px;
+    margin-bottom: 55px;
   }
 
-  .about-text {
-    font-size: 14px;
-    line-height: 1.8;
-  }
+  /* Photo */
 
   .about-image-wrapper {
     width: 220px;
@@ -640,8 +718,11 @@
   .about-experience-badge {
     padding: 14px 16px;
     gap: 10px;
-    right: -15px;
-    bottom: -20px;
+
+    right: -12px;
+    bottom: -18px;
+
+    border-radius: 18px;
   }
 
   .exp-number {
@@ -652,14 +733,26 @@
     font-size: 10px;
   }
 
+  /* Text */
+
+  .about-text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  /* Highlight cards */
+
   .highlight-item {
     padding: 16px;
     border-radius: 16px;
+    gap: 12px;
   }
 
   .highlight-icon {
     width: 42px;
     height: 42px;
+    border-radius: 12px;
   }
 
   .highlight-icon svg {
@@ -667,20 +760,37 @@
     height: 20px;
   }
 
+  .highlight-item h4 {
+    font-size: 12px;
+  }
+
+  .highlight-item p {
+    font-size: 11px;
+  }
+
+  /* Download button */
+
+  .download-cv {
+    padding: 13px 24px;
+    font-size: 13px;
+  }
+
+  /* Stats */
+
   .about-stats {
     gap: 10px;
   }
 
   .stat-card {
-    padding: 18px 10px;
     min-height: 145px;
+    padding: 18px 10px;
     border-radius: 18px;
   }
 
   .stat-icon {
     width: 36px;
     height: 36px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     border-radius: 12px;
   }
 
@@ -691,34 +801,32 @@
 
   .stat-number {
     font-size: 24px;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
   }
 
   .stat-label {
     font-size: 10px;
   }
-
-  .download-cv {
-    font-size: 13px;
-    padding: 13px 24px;
-  }
 }
 
 /* ==========================================
-   REDUCED MOTION ACCESSIBILITY
+   ACCESSIBILITY
 ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-  .about-photo,
   .about-image-bg,
   .about-image-placeholder,
+  .about-photo,
+  .about-experience-badge,
+  .highlight-item,
   .highlight-icon,
   .highlight-icon svg,
-  .stat-icon,
-  .stat-icon svg,
   .download-cv,
-  .download-cv svg {
+  .download-cv svg,
+  .stat-card,
+  .stat-icon,
+  .stat-icon svg {
     transition: none !important;
   }
 
