@@ -61,6 +61,14 @@ const Hero = () => {
   // ======================================
 
   const { scrollY } = useScroll()
+  useEffect(() => {
+  const unsubscribe = scrollY.on('change', (value) => {
+    console.log('Scroll position:', Math.round(value))
+    console.log('Reduced motion:', reduceMotion)
+  })
+
+  return unsubscribe
+}, [scrollY, reduceMotion])
 
   // Photo moves upward as the user scrolls
   const rawPhotoY = useTransform(
