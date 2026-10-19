@@ -1,398 +1,634 @@
+
+/* ==========================================
+   PROJECTS SECTION
+========================================== */
+
 .projects-section {
-    padding: 140px 0;
-    position: relative;
-    z-index: 1;
-    background: var(--bg-light);
-  }
-  
+  padding: 140px 0;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-light);
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ==========================================
+   SECTION HEADER
+========================================== */
+
+.projects-section .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.projects-section .section-tag {
+  color: var(--purple);
+}
+
+.projects-section .section-title {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.projects-section .section-subtitle {
+  font-size: 15px;
+  color: var(--text-dark-muted);
+  margin: 0 auto;
+  max-width: 500px;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   FILTER BAR
+========================================== */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.filter-chip {
+  background: var(--bg-glass);
+  border: 1px solid var(--bg-glass-border);
+
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  color: var(--purple-light);
+  padding: 11px 26px;
+  border-radius: 50px;
+
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Space Grotesk', sans-serif;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--purple);
+  color: var(--text);
+  background: var(--purple-glow);
+  transform: translateY(-2px);
+}
+
+.filter-chip.active {
+  background: var(--gradient-main);
+  border-color: transparent;
+  color: white;
+
+  box-shadow:
+    0 10px 30px rgba(124, 58, 237, 0.3);
+}
+
+.filter-chip:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   PROJECTS GRID
+========================================== */
+
+.projects-grid-new {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* ==========================================
+   PROJECT CARDS
+========================================== */
+
+.project-card-new {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 28px;
+  overflow: hidden;
+
+  box-shadow: var(--shadow-sm);
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+
+  position: relative;
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Framer Motion handles vertical movement */
+
+.project-card-new:hover {
+  border-color: var(--border-hover);
+
+  box-shadow:
+    var(--shadow-lg),
+    0 15px 45px rgba(124, 58, 237, 0.12);
+}
+
+/* ==========================================
+   PROJECT THUMBNAIL
+========================================== */
+
+.project-thumbnail {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Placeholder background */
+
+.project-thumb-bg {
+  width: 100%;
+  height: 100%;
+
+  background: var(--gradient-candy);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 80px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.15);
+
+  font-family: 'Sora', sans-serif;
+
+  transition: transform 0.6s ease;
+}
+
+.project-card-new:hover .project-thumb-bg {
+  transform: scale(1.06);
+}
+
+/* Real project image */
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.5s ease;
+}
+
+.project-card-new:hover .project-image {
+  transform: scale(1.07);
+  filter: brightness(0.88);
+}
+
+/* ==========================================
+   PROJECT ACTION OVERLAY
+========================================== */
+
+.project-actions {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(26, 16, 53, 0.82);
+
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+/* Display overlay on hover and keyboard focus */
+
+.project-card-new:hover .project-actions,
+.project-card-new:focus-within .project-actions {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================
+   GITHUB AND DEMO BUTTONS
+========================================== */
+
+.action-btn {
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 18px;
+
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+  border-color: var(--purple-light);
+  box-shadow: var(--shadow-glow);
+}
+
+.action-btn.primary {
+  background: var(--gradient-main);
+  border-color: transparent;
+}
+
+.action-btn.primary:hover {
+  box-shadow:
+    0 10px 30px rgba(168, 85, 247, 0.4);
+}
+
+.action-btn:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   PROJECT CARD CONTENT
+========================================== */
+
+.project-body {
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Project category */
+
+.project-meta {
+  margin-bottom: 12px;
+}
+
+.project-cat {
+  font-size: 11px;
+  color: var(--purple);
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Project title */
+
+.project-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+
+  margin: 0 0 10px;
+  line-height: 1.4;
+
+  transition: color 0.3s ease;
+}
+
+.project-card-new:hover .project-name {
+  color: var(--purple);
+}
+
+/* Project description */
+
+.project-desc {
+  font-size: 13px;
+  color: var(--text-dark-muted);
+  line-height: 1.8;
+
+  margin: 0 0 20px;
+}
+
+/* ==========================================
+   TECHNOLOGY CHIPS
+========================================== */
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: auto;
+}
+
+.stack-chip {
+  background: rgba(124, 58, 237, 0.06);
+  color: var(--purple);
+
+  padding: 5px 14px;
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.project-card-new:hover .stack-chip {
+  background: rgba(124, 58, 237, 0.1);
+}
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.projects-empty {
+  text-align: center;
+  color: var(--text-dark-muted);
+
+  font-size: 14px;
+  padding: 40px 20px;
+}
+
+/* ==========================================
+   TABLET RESPONSIVENESS
+========================================== */
+
+@media (max-width: 1024px) {
+
   .projects-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 24px;
   }
-  
-  /* ─── Header ────────────────────────────────────────────────────── */
-  .projects-section .section-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .projects-section .section-tag {
-    color: var(--purple);
-  }
-  
-  .projects-section .section-title {
-    font-size: clamp(28px, 5vw, 42px);
-    font-weight: 800;
-    color: var(--text-dark);
-    margin: 0 0 12px;
-    line-height: 1.2;
-  }
-  
-  .projects-section .section-subtitle {
-    font-size: 15px;
-    color: var(--text-dark-muted);
-    margin: 0 auto;
-    max-width: 500px;
-    line-height: 1.8;
-  }
-  
-  /* ─── Filter Bar ────────────────────────────────────────────────── */
-  .filter-bar {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .filter-chip {
-    background: var(--bg-glass);
-    border: 1px solid var(--bg-glass-border);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: var(--purple-light);
-    padding: 11px 26px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-  
-  .filter-chip:hover {
-    border-color: var(--purple);
-    color: var(--text);
-    background: var(--purple-glow);
-  }
-  
-  .filter-chip.active {
-    background: var(--gradient-main);
-    border-color: transparent;
-    color: white;
-    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
-  }
-  
-  /* ─── Grid ──────────────────────────────────────────────────────── */
+
   .projects-grid-new {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
+    gap: 22px;
   }
-  
-  /* ─── Card ──────────────────────────────────────────────────────── */
-  .project-card-new {
-    background: white;
-    border: 1px solid var(--border-light);
-    border-radius: 28px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .project-card-new:hover {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-10px);
-  }
-  
+
   .project-thumbnail {
-    position: relative;
-    height: 230px;
-    overflow: hidden;
+    height: 210px;
   }
-  
-  .project-thumb-bg {
-    width: 100%;
-    height: 100%;
-    background: var(--gradient-candy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.15);
-    font-family: 'Sora', sans-serif;
-    transition: transform 0.5s ease;
-  }
-  
-  .project-card-new:hover .project-thumb-bg {
-    transform: scale(1.05);
-  }
-  
-  /* ─── Overlay Actions ───────────────────────────────────────────── */
-  .project-actions {
-    position: absolute;
-    inset: 0;
-    background: rgba(26, 16, 53, 0.85);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    opacity: 0;
-    transition: all 0.4s ease;
-  }
-  
-  .project-card-new:hover .project-actions {
-    opacity: 1;
-  }
-  
-  .action-btn {
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  .action-btn:hover {
-    transform: scale(1.12);
-    border-color: var(--purple-light);
-    box-shadow: var(--shadow-glow);
-  }
-  
-  .action-btn.primary {
-    background: var(--gradient-main);
-    border-color: transparent;
-  }
-  
-  /* ─── Card Body ─────────────────────────────────────────────────── */
+
   .project-body {
-    padding: 30px;
+    padding: 24px;
   }
-  
-  .project-cat {
-    font-size: 11px;
-    color: var(--purple);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+========================================== */
+
+@media (max-width: 768px) {
+
+  .projects-section {
+    padding: 90px 0;
   }
-  
-  .project-meta {
-    margin-bottom: 12px;
+
+  .projects-container {
+    padding: 0 16px;
   }
-  
-  .project-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 10px;
+
+  .projects-section .section-header {
+    text-align: left;
+    margin-bottom: 40px;
   }
-  
-  .project-desc {
-    font-size: 13px;
-    color: var(--text-dark-muted);
-    line-height: 1.8;
-    margin-bottom: 20px;
+
+  .projects-section .section-tag-wrap {
+    justify-content: flex-start;
   }
-  
-  .project-stack {
-    display: flex;
-    flex-wrap: wrap;
+
+  .projects-section .section-subtitle {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Category filters */
+
+  .filter-bar {
     gap: 8px;
+    margin-bottom: 36px;
+    justify-content: flex-start;
   }
-  
+
+  .filter-chip {
+    padding: 9px 18px;
+    font-size: 12px;
+  }
+
+  /* One project per row */
+
+  .projects-grid-new {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .project-card-new {
+    border-radius: 22px;
+  }
+
+  .project-thumbnail {
+    height: 200px;
+  }
+
+  .project-thumb-bg {
+    font-size: 64px;
+  }
+
+  .action-btn {
+    width: 46px;
+    height: 46px;
+    font-size: 16px;
+  }
+
+  .project-body {
+    padding: 22px 18px;
+  }
+
+  .project-name {
+    font-size: 18px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
   .stack-chip {
-    background: rgba(124, 58, 237, 0.06);
-    color: var(--purple);
-    padding: 5px 14px;
-    border-radius: 20px;
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+}
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media (max-width: 480px) {
+
+  .projects-section {
+    padding: 80px 0;
+  }
+
+  .projects-container {
+    padding: 0 12px;
+  }
+
+  .projects-section .section-header {
+    margin-bottom: 32px;
+  }
+
+  .projects-section .section-subtitle {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .filter-bar {
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .filter-chip {
+    padding: 8px 14px;
     font-size: 11px;
-    font-weight: 500;
   }
-  
-  /* ─── Tablet ────────────────────────────────────────────────────── */
-  @media (max-width: 1024px) {
-    .projects-container {
-      padding: 0 24px;
-    }
-  
-    .projects-grid-new {
-      gap: 22px;
-    }
-  
-    .project-thumbnail {
-      height: 210px;
-    }
-  
-    .project-body {
-      padding: 24px;
-    }
+
+  .project-card-new {
+    border-radius: 18px;
   }
-  
-  /* ─── Mobile ────────────────────────────────────────────────────── */
-  @media (max-width: 768px) {
-    .projects-section {
-      padding: 90px 0;
-    }
-  
-    .projects-container {
-      padding: 0 16px;
-    }
-  
-    .projects-section .section-header {
-      text-align: left;
-      margin-bottom: 40px;
-    }
-  
-    .projects-section .section-tag-wrap {
-      justify-content: flex-start;
-    }
-  
-    .projects-section .section-subtitle {
-      font-size: 14px;
-      line-height: 1.7;
-      margin-left: 0;
-      margin-right: 0;
-    }
-  
-    .filter-bar {
-      gap: 8px;
-      margin-bottom: 36px;
-      justify-content: flex-start;
-    }
-  
-    .filter-chip {
-      padding: 9px 18px;
-      font-size: 12px;
-    }
-  
-    .projects-grid-new {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-  
-    .project-card-new {
-      border-radius: 22px;
-    }
-  
-    .project-thumbnail {
-      height: 200px;
-    }
-  
-    .project-thumb-bg {
-      font-size: 64px;
-    }
-  
-    .action-btn {
-      width: 46px;
-      height: 46px;
-      font-size: 16px;
-    }
-  
-    .project-body {
-      padding: 22px 18px;
-    }
-  
-    .project-name {
-      font-size: 18px;
-    }
-  
-    .project-desc {
-      font-size: 12px;
-      line-height: 1.7;
-    }
-  
-    .stack-chip {
-      font-size: 10px;
-      padding: 5px 12px;
-    }
+
+  .project-thumbnail {
+    height: 180px;
   }
-  
-  /* ─── Small Phone ───────────────────────────────────────────────── */
-  @media (max-width: 480px) {
-    .projects-section {
-      padding: 80px 0;
-    }
-  
-    .projects-container {
-      padding: 0 12px;
-    }
-  
-    .projects-section .section-header {
-      text-align: left;
-      margin-bottom: 32px;
-    }
-  
-    .projects-section .section-tag-wrap {
-      justify-content: flex-start;
-    }
-  
-    .projects-section .section-subtitle {
-      font-size: 13px;
-      line-height: 1.6;
-      margin-left: 0;
-      margin-right: 0;
-    }
-  
-    .filter-bar {
-      gap: 6px;
-      margin-bottom: 28px;
-      justify-content: flex-start;
-    }
-  
-    .filter-chip {
-      padding: 8px 14px;
-      font-size: 11px;
-    }
-  
-    .project-card-new {
-      border-radius: 18px;
-    }
-  
-    .project-thumbnail {
-      height: 180px;
-    }
-  
-    .project-thumb-bg {
-      font-size: 52px;
-    }
-  
-    .project-actions {
-      gap: 12px;
-    }
-  
-    .action-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 14px;
-    }
-  
-    .project-body {
-      padding: 18px 14px;
-    }
-  
-    .project-cat {
-      font-size: 10px;
-    }
-  
-    .project-name {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-  
-    .project-desc {
-      font-size: 11px;
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-  
-    .project-stack {
-      gap: 6px;
-    }
-  
-    .stack-chip {
-      font-size: 9px;
-      padding: 4px 10px;
-    }
+
+  .project-thumb-bg {
+    font-size: 52px;
   }
+
+  .project-actions {
+    gap: 12px;
+  }
+
+  .action-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .project-body {
+    padding: 18px 14px;
+  }
+
+  .project-cat {
+    font-size: 10px;
+  }
+
+  .project-name {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 11px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .project-stack {
+    gap: 6px;
+  }
+
+  .stack-chip {
+    font-size: 9px;
+    padding: 4px 10px;
+  }
+}
+
+/* ==========================================
+   TOUCH DEVICES
+   Keep project links accessible
+========================================== */
+
+@media (hover: none) {
+
+  .project-actions {
+    inset: auto 0 0;
+    height: 66px;
+
+    background: linear-gradient(
+      transparent,
+      rgba(26, 16, 53, 0.75)
+    );
+
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .project-image {
+    filter: none;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .project-card-new,
+  .project-image,
+  .project-thumb-bg,
+  .project-actions,
+  .action-btn,
+  .filter-chip,
+  .project-name,
+  .stack-chip {
+    transition: none !important;
+  }
+
+  .project-card-new:hover .project-image,
+  .project-card-new:hover .project-thumb-bg,
+  .action-btn:hover,
+  .filter-chip:hover {
+    transform: none;
+  }
+}
