@@ -16,11 +16,11 @@ import '../../styles/Admin.css'
 
 // Enter the email you registered in Firebase Authentication.
 // The visitor will NOT need to type this email.
-const ADMIN_EMAIL = 'YOUR_FIREBASE_EMAIL@example.com'
+const ADMIN_EMAIL = 'houdahousseini6@gmail.com'
 
 // Enter the UID of your admin user from Firebase Authentication.
 // This is NOT your password.
-const ADMIN_UID = 'YOUR_FIREBASE_ADMIN_UID'
+const ADMIN_UID = 'toMBdkDQjfYXbbpQ5vsWTrilnSs2'
 
 const AdminLogin = () => {
   const [password, setPassword] = useState('')
