@@ -69,7 +69,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>
-          © {new Date().getFullYear()} Houda Housseini. All rights reserved.
+          © {new Date().getFullYear()} Hoda Housseini. All rights reserved.
           </p>
           <p className="made-with">
             Made with <FaHeart className="heart-icon" /> and lots of coffee
