@@ -261,9 +261,9 @@ const FunFacts = () => {
               </span>
             </h2>
 
-            <p className="section-subtitle">
-              A little glimpse into my coding journey.
-            </p>
+     <p className="funfacts-description">
+  A little glimpse into my coding journey.
+</p>
 
           </div>
         </ScrollReveal>

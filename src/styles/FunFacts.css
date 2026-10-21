@@ -1,7 +1,6 @@
 
 /* ==========================================
    FUN FACTS SECTION
-   Original background preserved
 ========================================== */
 
 .funfacts-section {
@@ -26,9 +25,7 @@
 .funfacts-orb--left {
   width: 400px;
   height: 400px;
-
   background: rgba(99, 102, 241, 0.1);
-
   top: -100px;
   left: -150px;
 }
@@ -36,9 +33,7 @@
 .funfacts-orb--right {
   width: 350px;
   height: 350px;
-
   background: rgba(168, 85, 247, 0.08);
-
   bottom: -80px;
   right: -120px;
 }
@@ -51,24 +46,22 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
-
   position: relative;
   z-index: 1;
 }
 
 /* ==========================================
-   SECTION HEADER - LEFT ALIGNED
+   HEADER - FULLY LEFT ALIGNED
 ========================================== */
 
 .funfacts-section .section-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  width: 100%;
-  margin-bottom: 60px;
-
+  justify-content: flex-start;
   text-align: left;
+  width: 100%;
+  margin: 0 0 60px;
 }
 
 .funfacts-section .section-tag-wrap {
@@ -76,10 +69,9 @@
   align-items: center;
   justify-content: flex-start;
   align-self: flex-start;
-
   gap: 12px;
   width: 100%;
-  margin-bottom: 16px;
+  margin: 0 0 16px;
 }
 
 .funfacts-section .section-line {
@@ -87,7 +79,6 @@
   width: 36px;
   height: 2px;
   flex-shrink: 0;
-
   background: var(--gradient-main);
   border-radius: 2px;
 }
@@ -96,7 +87,6 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
-
   color: #a78bfa;
   text-transform: uppercase;
 }
@@ -104,29 +94,37 @@
 .funfacts-section .section-title {
   font-size: clamp(28px, 5vw, 42px);
   font-weight: 800;
-
   color: var(--text);
   line-height: 1.2;
-
-  margin: 0 0 12px;
   width: 100%;
-
+  margin: 0 0 12px;
   text-align: left;
   align-self: flex-start;
 }
 
-.funfacts-section .section-subtitle {
+/* ==========================================
+   DESCRIPTION - LEFT ALIGNMENT FIX
+========================================== */
+
+.funfacts-section .funfacts-description {
+  display: block;
   font-size: 15px;
   color: var(--text-muted);
-
   line-height: 1.8;
-  margin: 0;
 
-  max-width: 550px;
   width: 100%;
+  max-width: 550px;
+
+  margin: 0;
+  padding: 0;
 
   text-align: left;
   align-self: flex-start;
+
+  position: relative;
+  left: auto;
+  right: auto;
+  transform: none;
 }
 
 /* ==========================================
@@ -135,18 +133,10 @@
 
 .funfacts-grid {
   display: grid;
-
-  grid-template-columns: repeat(
-    6,
-    minmax(0, 1fr)
-  );
-
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 20px;
   align-items: stretch;
 }
-
-/* Make all ScrollReveal wrappers fill
-   their grid cells */
 
 .funfacts-grid > * {
   min-width: 0;
@@ -159,14 +149,12 @@
 
 .fact-card {
   background: var(--bg-glass);
-
   border: 1px solid var(--bg-glass-border);
 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
   border-radius: 20px;
-
   padding: 32px 12px 28px;
 
   text-align: center;
@@ -175,7 +163,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 12px;
 
   position: relative;
@@ -195,13 +182,10 @@
     background 0.35s ease;
 }
 
-/* Card hover */
+/* CARD HOVER */
 
 .fact-card:hover {
-  border-color: var(
-    --card-color,
-    var(--border-hover)
-  );
+  border-color: var(--card-color, var(--border-hover));
 
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.2),
@@ -212,8 +196,7 @@
     );
 }
 
-/* Framer Motion handles card
-   movement and scaling. */
+/* Framer Motion handles card movement */
 
 /* ==========================================
    ICON GLOW
@@ -221,7 +204,6 @@
 
 .fact-icon-glow {
   position: absolute;
-
   top: -20px;
   left: 50%;
 
@@ -284,8 +266,7 @@
 
   margin-bottom: 6px;
 
-  box-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 
   transition:
     background 0.3s ease,
@@ -293,15 +274,13 @@
     box-shadow 0.3s ease;
 }
 
-/* SVG styling */
+/* SVG ICON */
 
 .fact-icon-svg {
   width: 26px;
   height: 26px;
-
   display: block;
   flex-shrink: 0;
-
   color: inherit;
 
   filter: drop-shadow(
@@ -309,7 +288,7 @@
   );
 }
 
-/* Icon glow on card hover */
+/* ICON HOVER */
 
 .fact-card:hover .fact-icon {
   background: color-mix(
@@ -353,7 +332,6 @@
   z-index: 1;
 
   white-space: nowrap;
-
   font-variant-numeric: tabular-nums;
 }
 
@@ -364,12 +342,10 @@
 .fact-label {
   font-size: 12px;
   font-weight: 500;
-
   color: var(--text-muted);
 
   line-height: 1.5;
   letter-spacing: 0.02em;
-
   text-align: center;
 
   position: relative;
@@ -384,7 +360,6 @@
 
 .fact-card-line {
   position: absolute;
-
   bottom: 0;
   left: 50%;
 
@@ -414,17 +389,12 @@
 ========================================== */
 
 @media (max-width: 1024px) {
-
   .funfacts-container {
     padding: 0 24px;
   }
 
   .funfacts-grid {
-    grid-template-columns: repeat(
-      3,
-      minmax(0, 1fr)
-    );
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
   }
 
@@ -443,7 +413,6 @@
 ========================================== */
 
 @media (max-width: 768px) {
-
   .funfacts-section {
     padding: 80px 0;
   }
@@ -456,23 +425,18 @@
     margin-bottom: 45px;
   }
 
-  .funfacts-section .section-subtitle {
+  .funfacts-section .funfacts-description {
     font-size: 14px;
     line-height: 1.7;
   }
 
   .funfacts-grid {
-    grid-template-columns: repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
   .fact-card {
     padding: 28px 16px;
-
     min-height: 175px;
     border-radius: 18px;
   }
@@ -496,8 +460,6 @@
     font-size: 12px;
   }
 
-  /* Decorative orbs scaled down */
-
   .funfacts-orb--left {
     width: 300px;
     height: 300px;
@@ -514,7 +476,6 @@
 ========================================== */
 
 @media (max-width: 480px) {
-
   .funfacts-section {
     padding: 65px 0;
   }
@@ -528,31 +489,22 @@
   }
 
   .funfacts-section .section-title {
-    font-size: clamp(
-      28px,
-      8vw,
-      36px
-    );
+    font-size: clamp(28px, 8vw, 36px);
   }
 
-  .funfacts-section .section-subtitle {
+  .funfacts-section .funfacts-description {
     font-size: 13px;
     line-height: 1.6;
   }
 
   .funfacts-grid {
-    grid-template-columns: repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
   .fact-card {
     padding: 22px 10px;
     min-height: 160px;
-
     border-radius: 16px;
     gap: 10px;
   }
@@ -561,7 +513,6 @@
     width: 46px;
     height: 46px;
     border-radius: 14px;
-
     margin-bottom: 3px;
   }
 
@@ -585,7 +536,6 @@
 ========================================== */
 
 @media (max-width: 350px) {
-
   .funfacts-grid {
     gap: 10px;
   }
@@ -608,7 +558,6 @@
 ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
   .fact-card,
   .fact-icon,
   .fact-icon-glow,
